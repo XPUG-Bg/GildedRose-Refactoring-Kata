@@ -23,11 +23,41 @@ class GildedRose {
     private void updateItemQuality(Item item) {
         boolean isNotAgedBrie = !item.name.equals(AGED_BRIE);
         boolean isNotSulfuras = !item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
-        if (isNotAgedBrie) {
-            if (!item.name.equals(BACKSTAGE_PASSAGE)) {
-                if (item.quality > MIN_QUALITY) {
-                    if (isNotSulfuras) {
+        if (isNotSulfuras) {
+            if (isNotAgedBrie) {
+                if (!item.name.equals(BACKSTAGE_PASSAGE)) {
+                    if (item.quality > MIN_QUALITY) {
                         item.quality = item.quality - 1;
+                    }
+                } else {
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
+
+                        if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                            if (item.sellIn < 11) {
+                                if (item.quality < MAX_QUALITY) {
+                                    item.quality = item.quality + 1;
+                                }
+                            }
+
+                            if (item.sellIn < 6) {
+                                if (item.quality < MAX_QUALITY) {
+                                    item.quality = item.quality + 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                item.sellIn = item.sellIn - 1;
+
+                if (item.sellIn < MIN_SELLIN) {
+                    if (!item.name.equals(BACKSTAGE_PASSAGE)) {
+                        if (item.quality > MIN_QUALITY) {
+                            item.quality = item.quality - 1;
+                        }
+                    } else {
+                        item.quality = item.quality - item.quality;
                     }
                 }
             } else {
@@ -48,49 +78,65 @@ class GildedRose {
                         }
                     }
                 }
-            }
 
-            if (isNotSulfuras) {
                 item.sellIn = item.sellIn - 1;
-            }
 
-            if (item.sellIn < MIN_SELLIN) {
-                if (!item.name.equals(BACKSTAGE_PASSAGE)) {
-                    if (item.quality > MIN_QUALITY) {
-                        if (isNotSulfuras) {
-                            item.quality = item.quality - 1;
-                        }
+                if (item.sellIn < MIN_SELLIN) {
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
                     }
-                } else {
-                    item.quality = item.quality - item.quality;
                 }
             }
         } else {
-            if (item.quality < MAX_QUALITY) {
-                item.quality = item.quality + 1;
-
+            if (isNotAgedBrie) {
                 if (item.name.equals(BACKSTAGE_PASSAGE)) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
 
-                    if (item.sellIn < 6) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
+                        if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                            if (item.sellIn < 11) {
+                                if (item.quality < MAX_QUALITY) {
+                                    item.quality = item.quality + 1;
+                                }
+                            }
+
+                            if (item.sellIn < 6) {
+                                if (item.quality < MAX_QUALITY) {
+                                    item.quality = item.quality + 1;
+                                }
+                            }
                         }
                     }
                 }
-            }
 
-            if (isNotSulfuras) {
-                item.sellIn = item.sellIn - 1;
-            }
-
-            if (item.sellIn < MIN_SELLIN) {
+                if (item.sellIn < MIN_SELLIN) {
+                    if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                        item.quality = item.quality - item.quality;
+                    }
+                }
+            } else {
                 if (item.quality < MAX_QUALITY) {
                     item.quality = item.quality + 1;
+
+                    if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                        if (item.sellIn < 11) {
+                            if (item.quality < MAX_QUALITY) {
+                                item.quality = item.quality + 1;
+                            }
+                        }
+
+                        if (item.sellIn < 6) {
+                            if (item.quality < MAX_QUALITY) {
+                                item.quality = item.quality + 1;
+                            }
+                        }
+                    }
+                }
+
+                if (item.sellIn < MIN_SELLIN) {
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
+                    }
                 }
             }
         }
