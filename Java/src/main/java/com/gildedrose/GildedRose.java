@@ -24,58 +24,48 @@ class GildedRose {
         boolean isAgedBrie = item.name.equals(AGED_BRIE);
         boolean isSulfuras = item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
         boolean isBackstagePassage = item.name.equals(BACKSTAGE_PASSAGE);
+        if (isAgedBrie) {
+            if (item.quality < MAX_QUALITY) {
+                item.quality = item.quality + 1;
+            }
+            item.sellIn = item.sellIn - 1;
+            if (item.sellIn < MIN_SELLIN) {
+                if (item.quality < MAX_QUALITY) {
+                    item.quality = item.quality + 1;
+                }
+            }
+        }
+        if (isBackstagePassage) {
+            if (item.quality < MAX_QUALITY) {
+                item.quality = item.quality + 1;
+                if (item.sellIn < 11) {
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
+                    }
+                }
+                if (item.sellIn < 6) {
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
+                    }
+                }
+            }
+            item.sellIn = item.sellIn - 1;
+            if (item.sellIn < MIN_SELLIN) {
+                item.quality = item.quality - item.quality;
+            }
+        }
         if (!isSulfuras) {
             if (!isBackstagePassage) {
                 if (!isAgedBrie) {
-
                     if (item.quality > MIN_QUALITY) {
                         item.quality = item.quality - 1;
                     }
-
                     item.sellIn = item.sellIn - 1;
-
                     if (item.sellIn < MIN_SELLIN) {
                         if (item.quality > MIN_QUALITY) {
                             item.quality = item.quality - 1;
                         }
                     }
-                } else {
-                    if (item.quality < MAX_QUALITY) {
-                        item.quality = item.quality + 1;
-
-                    }
-
-                    item.sellIn = item.sellIn - 1;
-
-                    if (item.sellIn < MIN_SELLIN) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-                }
-            } else {
-                if (item.quality < MAX_QUALITY) {
-                    item.quality = item.quality + 1;
-
-
-                    if (item.sellIn < 11) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                }
-
-                item.sellIn = item.sellIn - 1;
-
-                if (item.sellIn < MIN_SELLIN) {
-                    item.quality = item.quality - item.quality;
                 }
             }
         }
