@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 class GildedRose {
+    public static final String AGED_BRIE = "Aged Brie";
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -9,7 +10,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items  ) {
-            if (!item.name.equals("Aged Brie")
+            if (!item.name.equals(AGED_BRIE)
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
                     if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
