@@ -26,75 +26,83 @@ class GildedRose {
         boolean isBackstagePassage = item.name.equals(BACKSTAGE_PASSAGE);
         if (!isSulfuras) {
             if (!isBackstagePassage) {
-                extracted(item, isAgedBrie, isBackstagePassage);
-            } else {
-                extracted(item, isAgedBrie, isBackstagePassage);
-            }
-        }
-    }
+                if (!isAgedBrie) {
 
-    private void extracted(Item item, boolean isAgedBrie, boolean isBackstagePassage) {
-        if (!isAgedBrie) {
-
-            if (!isBackstagePassage) {
-                if (item.quality > MIN_QUALITY) {
-                    item.quality = item.quality - 1;
-                }
-            } else {
-                if (item.quality < MAX_QUALITY) {
-                    item.quality = item.quality + 1;
-
-
-                    if (item.sellIn < 11) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                }
-            }
-
-            item.sellIn = item.sellIn - 1;
-
-            if (item.sellIn < MIN_SELLIN) {
-                if (!isBackstagePassage) {
                     if (item.quality > MIN_QUALITY) {
                         item.quality = item.quality - 1;
                     }
+
+                    item.sellIn = item.sellIn - 1;
+
+                    if (item.sellIn < MIN_SELLIN) {
+                        if (item.quality > MIN_QUALITY) {
+                            item.quality = item.quality - 1;
+                        }
+                    }
                 } else {
-                    item.quality = item.quality - item.quality;
-                }
-            }
-        } else {
-            if (item.quality < MAX_QUALITY) {
-                item.quality = item.quality + 1;
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
 
-                if (isBackstagePassage) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
                     }
 
-                    if (item.sellIn < 6) {
+                    item.sellIn = item.sellIn - 1;
+
+                    if (item.sellIn < MIN_SELLIN) {
                         if (item.quality < MAX_QUALITY) {
                             item.quality = item.quality + 1;
                         }
                     }
                 }
-            }
+            } else {
+                if (!isAgedBrie) {
 
-            item.sellIn = item.sellIn - 1;
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
 
-            if (item.sellIn < MIN_SELLIN) {
-                if (item.quality < MAX_QUALITY) {
-                    item.quality = item.quality + 1;
+
+                        if (item.sellIn < 11) {
+                            if (item.quality < MAX_QUALITY) {
+                                item.quality = item.quality + 1;
+                            }
+                        }
+
+                        if (item.sellIn < 6) {
+                            if (item.quality < MAX_QUALITY) {
+                                item.quality = item.quality + 1;
+                            }
+                        }
+
+                    }
+
+                    item.sellIn = item.sellIn - 1;
+
+                    if (item.sellIn < MIN_SELLIN) {
+                        item.quality = item.quality - item.quality;
+                    }
+                } else {
+                    if (item.quality < MAX_QUALITY) {
+                        item.quality = item.quality + 1;
+
+                        if (item.sellIn < 11) {
+                            if (item.quality < MAX_QUALITY) {
+                                item.quality = item.quality + 1;
+                            }
+                        }
+
+                        if (item.sellIn < 6) {
+                            if (item.quality < MAX_QUALITY) {
+                                item.quality = item.quality + 1;
+                            }
+                        }
+                    }
+
+                    item.sellIn = item.sellIn - 1;
+
+                    if (item.sellIn < MIN_SELLIN) {
+                        if (item.quality < MAX_QUALITY) {
+                            item.quality = item.quality + 1;
+                        }
+                    }
                 }
             }
         }
