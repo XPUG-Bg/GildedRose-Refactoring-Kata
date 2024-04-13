@@ -5,6 +5,7 @@ class GildedRose {
     public static final String BACKSTAGE_PASSAGE = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
     public static final int MAX_QUALITY = 50;
+    public static final int MIN_QUALITY = 0;
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -21,7 +22,7 @@ class GildedRose {
         boolean isNotAgedBrie = !item.name.equals(AGED_BRIE);
         if (isNotAgedBrie) {
             if (!item.name.equals(BACKSTAGE_PASSAGE)) {
-                if (item.quality > 0) {
+                if (item.quality > MIN_QUALITY) {
                     if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
                         item.quality = item.quality - 1;
                     }
@@ -50,9 +51,9 @@ class GildedRose {
                 item.sellIn = item.sellIn - 1;
             }
 
-            if (item.sellIn < 0) {
+            if (item.sellIn < MIN_QUALITY) {
                 if (!item.name.equals(BACKSTAGE_PASSAGE)) {
-                    if (item.quality > 0) {
+                    if (item.quality > MIN_QUALITY) {
                         if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
                             item.quality = item.quality - 1;
                         }
@@ -84,7 +85,7 @@ class GildedRose {
                 item.sellIn = item.sellIn - 1;
             }
 
-            if (item.sellIn < 0) {
+            if (item.sellIn < MIN_QUALITY) {
                 if (item.quality < MAX_QUALITY) {
                     item.quality = item.quality + 1;
                 }
