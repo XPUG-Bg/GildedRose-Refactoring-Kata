@@ -21,11 +21,12 @@ class GildedRose {
     }
 
     private void updateItemQuality(Item item) {
-        boolean isNotAgedBrie = !item.name.equals(AGED_BRIE);
-        boolean isNotSulfuras = !item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
-        if (isNotSulfuras) {
-            if (isNotAgedBrie) {
-                if (!item.name.equals(BACKSTAGE_PASSAGE)) {
+        boolean isAgedBrie = item.name.equals(AGED_BRIE);
+        boolean isSulfuras = item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
+        boolean isBackstagePassage = item.name.equals(BACKSTAGE_PASSAGE);
+        if (!isSulfuras) {
+            if (!isAgedBrie) {
+                if (!isBackstagePassage) {
                     if (item.quality > MIN_QUALITY) {
                         item.quality = item.quality - 1;
                     }
@@ -33,7 +34,7 @@ class GildedRose {
                     if (item.quality < MAX_QUALITY) {
                         item.quality = item.quality + 1;
 
-                        if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                        if (isBackstagePassage) {
                             if (item.sellIn < 11) {
                                 if (item.quality < MAX_QUALITY) {
                                     item.quality = item.quality + 1;
@@ -52,7 +53,7 @@ class GildedRose {
                 item.sellIn = item.sellIn - 1;
 
                 if (item.sellIn < MIN_SELLIN) {
-                    if (!item.name.equals(BACKSTAGE_PASSAGE)) {
+                    if (!isBackstagePassage) {
                         if (item.quality > MIN_QUALITY) {
                             item.quality = item.quality - 1;
                         }
@@ -64,7 +65,7 @@ class GildedRose {
                 if (item.quality < MAX_QUALITY) {
                     item.quality = item.quality + 1;
 
-                    if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                    if (isBackstagePassage) {
                         if (item.sellIn < 11) {
                             if (item.quality < MAX_QUALITY) {
                                 item.quality = item.quality + 1;
@@ -88,11 +89,11 @@ class GildedRose {
                 }
             }
         } else {
-            if (item.name.equals(BACKSTAGE_PASSAGE)) {
+            if (isBackstagePassage) {
                 if (item.quality < MAX_QUALITY) {
                     item.quality = item.quality + 1;
 
-                    if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                    if (isBackstagePassage) {
                         if (item.sellIn < 11) {
                             if (item.quality < MAX_QUALITY) {
                                 item.quality = item.quality + 1;
@@ -109,7 +110,7 @@ class GildedRose {
             }
 
             if (item.sellIn < MIN_SELLIN) {
-                if (item.name.equals(BACKSTAGE_PASSAGE)) {
+                if (isBackstagePassage) {
                     item.quality = item.quality - item.quality;
                 }
             }
