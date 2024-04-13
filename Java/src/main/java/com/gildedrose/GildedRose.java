@@ -4,6 +4,7 @@ class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSAGE = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
+    public static final int MAX_QUALITY = 50;
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -26,18 +27,18 @@ class GildedRose {
                     }
                 }
             } else {
-                if (item.quality < 50) {
+                if (item.quality < MAX_QUALITY) {
                     item.quality = item.quality + 1;
 
                     if (item.name.equals(BACKSTAGE_PASSAGE)) {
                         if (item.sellIn < 11) {
-                            if (item.quality < 50) {
+                            if (item.quality < MAX_QUALITY) {
                                 item.quality = item.quality + 1;
                             }
                         }
 
                         if (item.sellIn < 6) {
-                            if (item.quality < 50) {
+                            if (item.quality < MAX_QUALITY) {
                                 item.quality = item.quality + 1;
                             }
                         }
@@ -61,18 +62,18 @@ class GildedRose {
                 }
             }
         } else {
-            if (item.quality < 50) {
+            if (item.quality < MAX_QUALITY) {
                 item.quality = item.quality + 1;
 
                 if (item.name.equals(BACKSTAGE_PASSAGE)) {
                     if (item.sellIn < 11) {
-                        if (item.quality < 50) {
+                        if (item.quality < MAX_QUALITY) {
                             item.quality = item.quality + 1;
                         }
                     }
 
                     if (item.sellIn < 6) {
-                        if (item.quality < 50) {
+                        if (item.quality < MAX_QUALITY) {
                             item.quality = item.quality + 1;
                         }
                     }
@@ -84,7 +85,7 @@ class GildedRose {
             }
 
             if (item.sellIn < 0) {
-                if (item.quality < 50) {
+                if (item.quality < MAX_QUALITY) {
                     item.quality = item.quality + 1;
                 }
             }
