@@ -54,55 +54,28 @@ class GildedRose {
                     }
                 }
             } else {
-                if (!isAgedBrie) {
-
-                    if (item.quality < MAX_QUALITY) {
-                        item.quality = item.quality + 1;
+                if (item.quality < MAX_QUALITY) {
+                    item.quality = item.quality + 1;
 
 
-                        if (item.sellIn < 11) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                    }
-
-                    item.sellIn = item.sellIn - 1;
-
-                    if (item.sellIn < MIN_SELLIN) {
-                        item.quality = item.quality - item.quality;
-                    }
-                } else {
-                    if (item.quality < MAX_QUALITY) {
-                        item.quality = item.quality + 1;
-
-                        if (item.sellIn < 11) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-                    }
-
-                    item.sellIn = item.sellIn - 1;
-
-                    if (item.sellIn < MIN_SELLIN) {
+                    if (item.sellIn < 11) {
                         if (item.quality < MAX_QUALITY) {
                             item.quality = item.quality + 1;
                         }
                     }
+
+                    if (item.sellIn < 6) {
+                        if (item.quality < MAX_QUALITY) {
+                            item.quality = item.quality + 1;
+                        }
+                    }
+
+                }
+
+                item.sellIn = item.sellIn - 1;
+
+                if (item.sellIn < MIN_SELLIN) {
+                    item.quality = item.quality - item.quality;
                 }
             }
         }
