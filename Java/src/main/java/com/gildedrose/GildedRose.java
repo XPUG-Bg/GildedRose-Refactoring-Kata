@@ -88,30 +88,6 @@ class GildedRose {
                     }
                 }
             }
-        } else {
-            if (isBackstagePassage) {
-                if (item.quality < MAX_QUALITY) {
-                    item.quality = item.quality + 1;
-
-                    if (item.sellIn < 11) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < MAX_QUALITY) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                }
-            }
-            if (item.sellIn < MIN_SELLIN) {
-                if (isBackstagePassage) {
-                    item.quality = item.quality - item.quality;
-                }
-            }
         }
     }
 
