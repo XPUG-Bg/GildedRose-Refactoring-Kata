@@ -51,7 +51,7 @@ class GildedRose {
             }
             item.sellIn = item.sellIn - 1;
             if (item.sellIn < MIN_SELLIN) {
-                item.quality = item.quality - item.quality;
+                item.quality = 0;
             }
         }
         if (!isSulfuras && !isBackstagePassage && !isAgedBrie) {
